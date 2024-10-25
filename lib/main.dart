@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/ui/on_boarding/on_boarding_screen.dart';
+import 'package:islamic_app/ui/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,9 +37,7 @@ class MyApp extends StatelessWidget {
         SplashScreen.routeName:(_)=>SplashScreen() ,
      OnBoardingScreen.routeName:(_)=>OnBoardingScreen() ,
    },
-   routes: {
-        SplashScreen.routeName:(_)=>SplashScreen() ,
-   },
+
     );
   }
 }

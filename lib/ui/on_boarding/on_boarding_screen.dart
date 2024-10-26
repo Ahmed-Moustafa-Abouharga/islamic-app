@@ -100,6 +100,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         setState(() {
 
                         });
+
                       },
                       child: Text(
                         "Next",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/ui/home_screen/HomeScreen.dart';
 import 'package:islamic_app/ui/on_boarding/on_boarding_screen.dart';
 import 'package:islamic_app/ui/splash_screen/splash_screen.dart';
 
@@ -15,6 +16,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+
+          unselectedItemColor: Colors.black,
+          selectedIconTheme: IconThemeData(
+            color: Colors.white,
+
+          ),
+
+        ),
         textTheme: TextTheme(
           titleMedium: TextStyle(
             fontWeight: FontWeight.w700,
@@ -27,9 +37,11 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.deepPurple, primary: Color(0xffE2BE7F)),
         useMaterial3: true,
       ),
+      initialRoute: HomeScreen.routeName,
       routes: {
-        SplashScreen.routeName: (_) => SplashScreen(),
-        OnBoardingScreen.routeName: (_) => OnBoardingScreen(),
+      //  SplashScreen.routeName: (_) => SplashScreen(),
+      //  OnBoardingScreen.routeName: (_) => OnBoardingScreen(),
+        HomeScreen.routeName:(_)=>HomeScreen() ,
       },
     );
   }

@@ -24,6 +24,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         "You can listen to the Holy Quran Radio through the application for free and easily"),
   ];
   PageController pageController = PageController();
+  bool isFirstItem = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -51,30 +52,55 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   itemCount: onBoardingItemList.length,
                   scrollDirection: Axis.horizontal,
                   controller: pageController,
+                  onPageChanged: (index) {
+                    if (index == 1) {
+                      isFirstItem = false;
+                      setState(() {});
+                    } else if (index == 0) {
+                      isFirstItem = true;
+                      setState(() {});
+                    }
+                  },
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Back",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(fontSize: 16),
-                      )),
+                      onPressed: () {
+                        pageController.previousPage(duration: Duration(microseconds: 500), curve: Curves.easeIn) ;
+                        setState(() {
+
+                        });
+                      },
+                      child: isFirstItem
+                          ? Text("")
+                          : Text(
+                              "Back",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(fontSize: 16),
+                            )),
                   SmoothPageIndicator(
-                      effect: ExpandingDotsEffect(
-                          dotColor: Color(0xff707070),
-                          activeDotColor: Theme.of(context).colorScheme.primary,
-                          dotHeight: 7,
-                          dotWidth: 7),
-                      controller: pageController,
-                      count: onBoardingItemList.length),
+                    effect: ExpandingDotsEffect(
+                        dotColor: Color(0xff707070),
+                        activeDotColor: Theme.of(context).colorScheme.primary,
+                        dotHeight: 7,
+                        dotWidth: 7),
+                    controller: pageController,
+                    count: onBoardingItemList.length,
+                  ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        pageController.nextPage(
+                          duration: Duration(microseconds: 200),
+                          curve: Curves.easeInToLinear,
+                        );
+                        setState(() {
+
+                        });
+                      },
                       child: Text(
                         "Next",
                         style: Theme.of(context)

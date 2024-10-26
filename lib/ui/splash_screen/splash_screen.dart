@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/ui/on_boarding/on_boarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(
-      Duration(seconds: 3),() => Navigator.popAndPushNamed(context,""),
+      Duration(seconds: 3),() => Navigator.popAndPushNamed(context,OnBoardingScreen.routeName),
     );
 
   }

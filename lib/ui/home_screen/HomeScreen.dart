@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/quran_tab/quran_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -9,52 +10,59 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
-
+  List<Widget> quranTabs = [
+    const QuranTab(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/images/background_home.png')),
       ),
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Image.asset('assets/images/Masjid.png'),
-                      Image.asset('assets/images/Islami.png'),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Image.asset('assets/images/Masjid.png'),
+                        Image.asset('assets/images/Islami.png'),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10,),
+
+                quranTabs[currentIndex],
+              ],
+            ),
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentIndex,
             onTap: (value) {
               currentIndex = value;
-              setState(() {
-
-              });
+              setState(() {});
             },
             items: [
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).colorScheme.primary,
                   icon: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 0
-                            ? Color(0xff20202020).withOpacity(.5)
+                            ? const Color(0xff20202020).withOpacity(.5)
                             : Colors.transparent),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage(
                         "assets/images/quran_icon.png",
                       ),
@@ -66,13 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? Theme.of(context).colorScheme.primary
                       : Colors.transparent,
                   icon: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 1
-                            ? Color(0xff20202020).withOpacity(.5)
+                            ? const Color(0xff20202020).withOpacity(.5)
                             : Colors.transparent),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage(
                         "assets/images/hadith_icon.png",
                       ),
@@ -81,13 +89,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "Hadith"),
               BottomNavigationBarItem(
                   icon: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 2
-                            ? Color(0xff20202020).withOpacity(.5)
+                            ? const Color(0xff20202020).withOpacity(.5)
                             : Colors.transparent),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage(
                         "assets/images/sebha_icon.png",
                       ),
@@ -96,13 +104,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "Sebha"),
               BottomNavigationBarItem(
                   icon: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 3
-                            ? Color(0xff20202020).withOpacity(.5)
+                            ? const Color(0xff20202020).withOpacity(.5)
                             : Colors.transparent),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage(
                         "assets/images/radio-icon.png",
                       ),
@@ -111,13 +119,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "Radio"),
               BottomNavigationBarItem(
                   icon: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 4
-                            ? Color(0xff20202020).withOpacity(.5)
+                            ? const Color(0xff20202020).withOpacity(.5)
                             : Colors.transparent),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage(
                         "assets/images/azkar.png",
                       ),

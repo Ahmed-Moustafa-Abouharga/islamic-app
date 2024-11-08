@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 class AppTheme{
   static ThemeData lightTheme= ThemeData(
+    appBarTheme: AppBarTheme(
+      iconTheme: IconThemeData(
+        color: Color(0xffE2BE7F),
+      )
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
 
       unselectedItemColor: Colors.black,

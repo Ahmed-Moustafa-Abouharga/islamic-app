@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/ui/home_screen/HomeScreen.dart';
 import 'package:islamic_app/ui/on_boarding/on_boarding.dart';
 import 'package:islamic_app/ui/on_boarding/on_boarding_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -25,6 +26,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   ];
   PageController pageController = PageController();
   bool isFirstItem = true;
+  bool isLastItem = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,31 +62,33 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       isFirstItem = true;
                       setState(() {});
                     }
+                    else if(index == 4){
+                      isLastItem =true;
+                    }
                   },
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
+               isFirstItem?   TextButton(
                       onPressed: () {
-                        pageController.previousPage(duration: Duration(microseconds: 500), curve: Curves.easeIn) ;
-                        setState(() {
-
-                        });
+                        pageController.previousPage(
+                            duration: Duration(microseconds: 500),
+                            curve: Curves.easeIn);
+                        setState(() {});
                       },
-                      child: isFirstItem
-                          ? Text("")
-                          : Text(
+                      child:
+                          Text(
                               "Back",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium
                                   ?.copyWith(fontSize: 16),
-                            )),
+                            )):const Text(""),
                   SmoothPageIndicator(
                     effect: ExpandingDotsEffect(
-                        dotColor: Color(0xff707070),
+                        dotColor: const Color(0xff707070),
                         activeDotColor: Theme.of(context).colorScheme.primary,
                         dotHeight: 7,
                         dotWidth: 7),
@@ -97,10 +101,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           duration: Duration(microseconds: 200),
                           curve: Curves.easeInToLinear,
                         );
+
                         setState(() {
-
+                          if(isLastItem)
+                            {
+                              Navigator.popAndPushNamed(context, HomeScreen.routeName) ;
+                            }
                         });
-
                       },
                       child: Text(
                         "Next",

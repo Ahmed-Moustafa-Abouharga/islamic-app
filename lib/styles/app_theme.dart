@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme{
   static ThemeData lightTheme= ThemeData(
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(
         color: Color(0xffE2BE7F),
       )
@@ -16,7 +16,12 @@ class AppTheme{
       ),
 
     ),
-    textTheme: const TextTheme(
+    textTheme:  const TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 36,
+        fontWeight: FontWeight.w700,
+        color: Colors.white
+      ),
         titleSmall: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,

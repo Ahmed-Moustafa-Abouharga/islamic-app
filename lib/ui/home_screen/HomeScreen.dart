@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/quran_tab/quran_tab.dart';
+import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/sebha_tab/sebha_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -11,14 +12,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   List<Widget> quranTabs = [
-     QuranTab(),
+    QuranTab(),
+    Container(),
+    SebhaTab(),
   ];
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/background_home.png')),
+          image: AssetImage(currentIndex == 2
+              ? 'assets/images/sebhaBackground.png'
+              : 'assets/images/background_home.png'),
+        ),
       ),
       child: SafeArea(
         child: Scaffold(
@@ -26,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
-
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -40,8 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10,),
-
+                const SizedBox(
+                  height: 10,
+                ),
                 quranTabs[currentIndex],
               ],
             ),
@@ -56,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).colorScheme.primary,
                   icon: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 0
@@ -74,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? Theme.of(context).colorScheme.primary
                       : Colors.transparent,
                   icon: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 1
@@ -89,7 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "Hadith"),
               BottomNavigationBarItem(
                   icon: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 2
@@ -104,7 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "Sebha"),
               BottomNavigationBarItem(
                   icon: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 3
@@ -119,7 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "Radio"),
               BottomNavigationBarItem(
                   icon: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 17, vertical: 4),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: currentIndex == 4

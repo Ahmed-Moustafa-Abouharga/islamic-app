@@ -16,7 +16,12 @@ class AppTheme{
       ),
 
     ),
-    textTheme:  const TextTheme(
+    textTheme:   const TextTheme(
+      bodyMedium: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: Colors.black
+      ),
       titleLarge: TextStyle(
         fontSize: 36,
         fontWeight: FontWeight.w700,

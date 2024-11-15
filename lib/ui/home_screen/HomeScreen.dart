@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/hadith_tab/hadith_tab.dart';
 import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/quran_tab/quran_tab.dart';
 import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/sebha_tab/sebha_tab.dart';
 
@@ -13,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   List<Widget> quranTabs = [
     QuranTab(),
-    Container(),
+    HadithTab(),
     SebhaTab(),
   ];
   @override

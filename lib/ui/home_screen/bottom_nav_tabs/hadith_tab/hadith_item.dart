@@ -8,8 +8,9 @@ class HadithItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double heith = MediaQuery.of(context).size.height;
     return Container(
-    width: width*0.8,
+      width: width*0.8,
      decoration: BoxDecoration(
        color:Theme.of(context).colorScheme.primary,
        borderRadius: BorderRadius.circular(10),

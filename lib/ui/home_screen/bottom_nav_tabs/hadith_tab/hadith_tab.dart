@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/hadith_tab/hadith_item.dart';
 import 'package:islamic_app/ui/home_screen/widgets/custom_text_field.dart';
-
+import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'hadith.dart';
 import 'hadith_details_screen.dart';
 
@@ -14,7 +14,7 @@ class HadithTab extends StatefulWidget {
 }
 
 class _HadithTabState extends State<HadithTab> {
-  @override
+  int focusedIndex = 0 ;
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     if (ahadithList.isEmpty) {
@@ -28,36 +28,42 @@ class _HadithTabState extends State<HadithTab> {
           SizedBox(
             height: height * 0.01,
           ),
+
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => ahadithList.isEmpty
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, HadithDetailsScreen.routeName,
-                              arguments: Hadith(
-                                hadithTitle: ahadithList[index].hadithTitle,
-                                hadithContent: ahadithList[index].hadithContent, index: index,
-                              ));
-                          print("hadith sent");
-                        },
-                        child: HadithItem(
-                          hadith: ahadithList[index],
+              child: ScrollSnapList(
+                  itemBuilder: (context, index) => ahadithList.isEmpty
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, HadithDetailsScreen.routeName,
+                                arguments: Hadith(
+                                  hadithTitle: ahadithList[index].hadithTitle,
+                                  hadithContent: ahadithList[index].hadithContent,
+                                  index: index,
+                                ));
+                            print("hadith sent");
+                          },
+                          child: HadithItem(
+                            hadith: ahadithList[index],
+                          ),
                         ),
-                      ),
-                separatorBuilder: (context, index) => const SizedBox(
-                  width: 20,
-                ),
-                itemCount: ahadithList.length,
+                  itemCount: ahadithList.length,
+                  onItemFocus: (int index){
+                    setState(() {
+                      focusedIndex = index;
+                    });
+                  },
+                scrollDirection: Axis.horizontal,
+                dynamicItemSize: true,
+                reverse: true, itemSize: 290,
               ),
             ),
-          ),
+          )
         ],
       ),
     );
@@ -73,8 +79,8 @@ class _HadithTabState extends State<HadithTab> {
       String hadithTitle = hadithLines[0];
       hadithLines.removeAt(0);
       String hadithContent = hadithLines.join(" ");
-      ahadithList
-          .add(Hadith(hadithTitle: hadithTitle, hadithContent: hadithContent, index: i));
+      ahadithList.add(Hadith(
+          hadithTitle: hadithTitle, hadithContent: hadithContent, index: i));
     }
     setState(() {});
   }

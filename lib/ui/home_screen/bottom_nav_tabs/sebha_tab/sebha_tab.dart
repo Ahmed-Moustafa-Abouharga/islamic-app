@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/sebha_tab/tsbeet_item.dart';
+
 
 class SebhaTab extends StatefulWidget {
   SebhaTab({super.key});
@@ -44,7 +44,7 @@ class _SebhaTabState extends State<SebhaTab> {
                 {
                   number=1 ;
                   index++;
-                  if(index==3)
+                  if(index==4)
                     {
                       index=0;
                     }

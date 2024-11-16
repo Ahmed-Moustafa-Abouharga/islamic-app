@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/quran_tab/quran_details_screen.dart';
 import 'package:islamic_app/ui/home_screen/bottom_nav_tabs/quran_tab/sura_list_item.dart';
+import 'package:islamic_app/ui/home_screen/widgets/custom_text_field.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> suraNames = [
@@ -244,30 +245,7 @@ class QuranTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextField(
-            onChanged: (value){},
-            style: Theme.of(context).textTheme.titleSmall,
-            decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                )),
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                )),
-                prefixIcon: Container(
-                  margin: const EdgeInsets.all(8),
-                  child: ImageIcon(
-                    const AssetImage(
-                      "assets/images/quran_icon.png",
-                    ),
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                hintText: "Sura Name",
-                hintStyle: Theme.of(context).textTheme.titleSmall),
-          ),
+        const CustomTextField(title: "Sura Name", icon: "assets/images/quran_icon.png"),
           SizedBox(
             height: height * .01,
           ),
@@ -291,9 +269,7 @@ class QuranTab extends StatelessWidget {
                     const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Al-Anbiya"),
-                        Text("Al-Anbiya"),
-                        Text("112 verses"),
+                        Text("Al-Anbiya",),
                       ],
                     ),
                     Image.asset("assets/images/recently_quran.png"),
